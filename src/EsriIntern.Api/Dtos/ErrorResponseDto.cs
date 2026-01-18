@@ -1,27 +1,18 @@
-namespace EsriIntern.Api.Dtos;
-
-/// <summary>
-/// Стандартизиран DTO за error responses
-/// </summary>
-public class ErrorResponseDto
+namespace EsriIntern.Api.Dtos
 {
     /// <summary>
-    /// HTTP статус код
+    /// Стандартизиран DTO за error responses
     /// </summary>
-    public int Status { get; set; }
+    public class ErrorResponseDto
+    {
+        public int Status { get; set; }
+        public string Message { get; set; } = string.Empty;
+        public string? Details { get; set; }
+        public DateTime Timestamp { get; set; }
 
-    /// <summary>
-    /// Съобщение за грешката
-    /// </summary>
-    public string Message { get; set; } = string.Empty;
-
-    /// <summary>
-    /// Опционални детайли за грешката (например в Development режим)
-    /// </summary>
-    public string? Details { get; set; }
-
-    /// <summary>
-    /// Timestamp на грешката
-    /// </summary>
-    public DateTime Timestamp { get; set; } = DateTime.UtcNow;
+        public ErrorResponseDto()
+        {
+            Timestamp = DateTime.UtcNow;
+        }
+    }
 }
