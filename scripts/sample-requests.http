@@ -1,0 +1,20 @@
+@baseUrl = http://localhost:5079
+
+### Health
+GET {{baseUrl}}/api/stats/health
+
+### Force refresh (optional – can take a bit)
+POST {{baseUrl}}/api/stats/refresh
+Content-Type: application/json
+
+{}
+
+### List states
+GET {{baseUrl}}/api/stats/states
+
+### Filter states by name (query parameter)
+GET {{baseUrl}}/api/stats/states?stateName=California
+GET {{baseUrl}}/api/stats/states?stateName=New
+
+### Get single state by exact name (path parameter)
+GET {{baseUrl}}/api/stats/states/California

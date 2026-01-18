@@ -1,0 +1,19 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EsriIntern.Api", "src\\EsriIntern.Api\\EsriIntern.Api.csproj", "{0B0E6E66-5A61-4F48-9D10-2A5C0F7A8F8B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0B0E6E66-5A61-4F48-9D10-2A5C0F7A8F8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B0E6E66-5A61-4F48-9D10-2A5C0F7A8F8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B0E6E66-5A61-4F48-9D10-2A5C0F7A8F8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B0E6E66-5A61-4F48-9D10-2A5C0F7A8F8B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

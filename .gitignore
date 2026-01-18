@@ -1,0 +1,19 @@
+# Build
+bin/
+obj/
+
+# User-specific
+.vs/
+*.user
+*.suo
+
+# Logs
+*.log
+
+# DB / local data
+src/EsriIntern.Api/data/
+*.db
+
+# OS
+.DS_Store
+Thumbs.db

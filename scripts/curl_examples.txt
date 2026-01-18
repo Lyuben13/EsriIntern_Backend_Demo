@@ -1,0 +1,15 @@
+# Health
+curl -s http://localhost:5000/api/stats/health
+
+# List all states
+curl -s http://localhost:5000/api/stats/states
+
+# Filter states by name (query parameter)
+curl -s "http://localhost:5000/api/stats/states?stateName=California"
+curl -s "http://localhost:5000/api/stats/states?stateName=New"
+
+# Single state by exact name (path parameter)
+curl -s "http://localhost:5000/api/stats/states/California"
+
+# Force refresh
+curl -X POST -s http://localhost:5000/api/stats/refresh
