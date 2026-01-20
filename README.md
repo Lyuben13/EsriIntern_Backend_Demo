@@ -1,9 +1,5 @@
 # ESRI Internship – Backend demo (Background processing + REST API)
 
-
-
-# ESRI Internship – Backend Demo (Background processing + REST API)
-
 ## Демо / Screenshots
 
 ### Swagger UI (главна страница)
