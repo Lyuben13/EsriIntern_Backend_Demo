@@ -11,8 +11,10 @@ obj/
 *.log
 
 # DB / local data
-src/EsriIntern.Api/data/
+src/EsriIntern.Api/Data/
 *.db
+*.db-wal
+*.db-shm
 
 # OS
 .DS_Store
