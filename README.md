@@ -3,6 +3,9 @@
 [![.NET 8](https://img.shields.io/badge/.NET-8.0-blue.svg)](https://dotnet.microsoft.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Build Status](https://img.shields.io/badge/build-passing-brightgreen)]()  <!-- Ако добавиш CI -->
+[![.NET 8](https://img.shields.io/badge/.NET-8.0-blue.svg)](https://dotnet.microsoft.com/)
+[![Swagger](https://img.shields.io/badge/Swagger-Documented-green)](http://localhost:5000/swagger)
+[![Health Checks](https://img.shields.io/badge/Health-Ready-brightgreen)]()
 
 ## Демо / Screenshots
 
