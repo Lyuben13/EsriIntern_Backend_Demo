@@ -1,5 +1,33 @@
 # ESRI Internship – Backend demo (Background processing + REST API)
 
+
+
+# ESRI Internship – Backend Demo (Background processing + REST API)
+
+## Демо / Screenshots
+
+### Swagger UI (главна страница)
+![Swagger UI](screenshots/swaggerEsri.jpg)
+
+### Health Check (от Swagger)
+![Health Check Swagger](screenshots/healthEsriSwagger.jpg)
+
+### Health Check (/api/stats/health)
+![Health Check](screenshots/healthEsri.jpg)
+
+### Ръчно опресняване (POST /api/stats/refresh)
+![Refresh Endpoint](screenshots/RefreshEsri.jpg)
+
+### Списък с щати (/api/stats/states)
+![All States](screenshots/statsStatesEsri.jpg)
+
+### Детайли за щат (вероятно Hawaii или друг)
+![State Details](screenshots/esriStates.jpg)
+
+*Данните се извличат периодично от ArcGIS Feature Service, агрегират се по щат и се кешират за бърз достъп.*
+
+
+
 Проектът демонстрира:
 - **Background processing** (HostedService), който периодично извлича демографски данни (население) от ArcGIS Feature Service.
 - **REST API**, което връща агрегирани резултати на ниво **щат** (sum на `POPULATION` по `STATE_NAME`).
