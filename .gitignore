@@ -11,10 +11,12 @@ obj/
 *.log
 
 # DB / local data
-src/EsriIntern.Api/Data/
-*.db
-*.db-wal
-*.db-shm
+**/*.db
+**/*.db-wal
+**/*.db-shm
+**/*.sqlite
+**/*.sqlite-wal
+**/*.sqlite-shm
 
 # OS
 .DS_Store
