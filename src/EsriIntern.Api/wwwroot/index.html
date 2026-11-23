@@ -33,7 +33,7 @@
             <div class="panel-heading">
                 <h2 id="table-title">Статистика по щати</h2>
                 <div class="controls">
-                    <label for="search">Търси по име
+                    <label for="search">Търси щат по име
                         <input id="search" type="search" placeholder="Напр. Калифорния" disabled>
                     </label>
                     <label for="sort">Подреди по
@@ -46,6 +46,7 @@
                 </div>
             </div>
             <p class="status" id="status" role="status">Зареждане на данните…</p>
+            <p class="status"><a id="city-search-link" href="/cities.html">Търси населено място в „Градове“</a></p>
             <button id="reload" type="button" hidden>Провери отново</button>
             <table id="table" aria-labelledby="table-title" hidden>
                 <thead><tr><th scope="col" id="state-column">Щат</th><th scope="col" id="population-column">Население</th></tr></thead>

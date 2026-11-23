@@ -7,6 +7,7 @@ const pageLabel = document.querySelector('#city-page');
 const previous = document.querySelector('#city-prev');
 const next = document.querySelector('#city-next');
 const retry = document.querySelector('#city-retry');
+citySearch.value = new URLSearchParams(window.location.search).get('q') ?? '';
 const countFormat = new Intl.NumberFormat('bg-BG');
 const pageSize = 25;
 const cityAliases = new Map([

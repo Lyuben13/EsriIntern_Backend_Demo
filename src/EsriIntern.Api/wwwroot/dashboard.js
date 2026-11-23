@@ -3,6 +3,7 @@ const sort = document.querySelector('#sort');
 const results = document.querySelector('#results');
 const table = document.querySelector('#table');
 const status = document.querySelector('#status');
+const citySearchLink = document.querySelector('#city-search-link');
 const reload = document.querySelector('#reload');
 const stateColumn = document.querySelector('#state-column');
 const populationColumn = document.querySelector('#population-column');
@@ -44,7 +45,9 @@ function renderChart() {
 }
 
 function render() {
-    const query = search.value.trim().toLowerCase();
+    const input = search.value.trim();
+    const query = input.toLowerCase();
+    citySearchLink.href = input ? `/cities.html?${new URLSearchParams({ q: input })}` : '/cities.html';
     const filtered = states.filter(state =>
         state.displayName.toLowerCase().includes(query) || state.stateName.toLowerCase().includes(query)
     );
