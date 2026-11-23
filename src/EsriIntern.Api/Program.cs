@@ -115,6 +115,8 @@ var app = builder.Build();
 
 // Middleware pipeline
 app.UseMiddleware<GlobalExceptionHandlerMiddleware>();
+app.UseDefaultFiles();
+app.UseStaticFiles();
 
 if (app.Environment.IsDevelopment())
 {

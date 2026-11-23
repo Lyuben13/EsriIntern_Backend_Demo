@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="bg">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Население по щати | Демографски атлас</title>
+    <link rel="stylesheet" href="/dashboard.css">
+    <script src="/dashboard.js" defer></script>
+</head>
+<body>
+    <header class="topbar">
+        <div class="wrap topbar-inner">
+            <span class="brand">Демографски атлас</span>
+            <a href="/api/stats/states">Данни от API</a>
+        </div>
+    </header>
+    <main class="wrap">
+        <section class="overview" aria-labelledby="title">
+            <h1 id="title">Население по щати</h1>
+            <p class="intro">САЩ · Данни от ArcGIS</p>
+            <dl class="metrics">
+                <div><dt>Щати и окръг Колумбия</dt><dd id="state-count">—</dd></div>
+                <div><dt>Общо население в набора</dt><dd id="total">—</dd></div>
+                <div><dt>Последно успешно обновяване</dt><dd id="updated">—</dd></div>
+            </dl>
+        </section>
+        <section class="panel" aria-labelledby="table-title">
+            <div class="panel-heading">
+                <h2 id="table-title">Статистика по щати</h2>
+                <div class="controls">
+                    <label for="search">Търси по име
+                        <input id="search" type="search" placeholder="Напр. California" disabled>
+                    </label>
+                    <label for="sort">Подреди по
+                        <select id="sort" disabled>
+                            <option value="descending">Население ↓</option>
+                            <option value="ascending">Население ↑</option>
+                            <option value="name">Име (A–Z)</option>
+                        </select>
+                    </label>
+                </div>
+            </div>
+            <p class="status" id="status" role="status">Зареждане на данните…</p>
+            <button id="reload" type="button" hidden>Провери отново</button>
+            <table id="table" aria-labelledby="table-title" hidden>
+                <thead><tr><th scope="col" id="state-column">Щат</th><th scope="col" id="population-column">Население</th></tr></thead>
+                <tbody id="results"></tbody>
+            </table>
+            <p class="status" id="data-note" hidden>Наборът съдържа нулеви стойности. Общото население е сборът на наличните стойности.</p>
+            <noscript>Включи JavaScript, за да видиш статистиките.</noscript>
+        </section>
+    </main>
+</body>
+</html>

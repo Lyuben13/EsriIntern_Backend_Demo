@@ -7,7 +7,9 @@
 
 ## Демо / Screenshots
 
-### Swagger UI (главна страница)
+Началната страница на [localhost:5000](http://localhost:5000) показва населението по щати, търсене по английско име, сортиране и момента на последното успешно обновяване.
+
+### Swagger UI
 ![Swagger UI](screenshots/swaggerEsri.jpg)
 
 ### Health Check (от Swagger)
@@ -73,7 +75,7 @@
 - `GET /health` – ASP.NET Core health check endpoint
 
 ### Swagger UI
-- В Development режим: `GET /` (Swagger UI на root)
+- В Development режим: `GET /swagger`
 - Swagger JSON: `GET /swagger/v1/swagger.json`
 
 ## Настройки
