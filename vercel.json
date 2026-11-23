@@ -1,0 +1,19 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "buildCommand": "",
+  "installCommand": "",
+  "outputDirectory": "src/EsriIntern.Api/wwwroot",
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "https://esri-demographics-atlas.onrender.com/",
+      "permanent": false
+    },
+    {
+      "source": "/:path*",
+      "destination": "https://esri-demographics-atlas.onrender.com/:path*",
+      "permanent": false
+    }
+  ]
+}
