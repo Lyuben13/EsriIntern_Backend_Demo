@@ -11,7 +11,8 @@ body { margin: 0; }
 .wrap { width: min(72rem, 100% - 2rem); margin-inline: auto; }
 .topbar { background: #fff; border-bottom: 1px solid #d6e0db; }
 .topbar-inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 4rem; }
-.brand { font-weight: 750; }
+.topbar .brand { color: inherit; font-weight: 750; text-decoration: none; }
+.topbar .brand:hover { text-decoration: underline; }
 .topbar nav, .pagination { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem 1rem; }
 .topbar nav [aria-current] { font-weight: 750; }
 a { color: #185f4d; }
