@@ -8,7 +8,60 @@ const stateColumn = document.querySelector('#state-column');
 const populationColumn = document.querySelector('#population-column');
 const numberFormat = new Intl.NumberFormat('bg-BG');
 const dateFormat = new Intl.DateTimeFormat('bg-BG', { dateStyle: 'medium', timeStyle: 'short' });
-const byName = (a, b) => a.stateName.localeCompare(b.stateName, 'en');
+const stateNames = new Map(Object.entries({
+    'Alabama': 'Алабама',
+    'Alaska': 'Аляска',
+    'Arizona': 'Аризона',
+    'Arkansas': 'Арканзас',
+    'California': 'Калифорния',
+    'Colorado': 'Колорадо',
+    'Connecticut': 'Кънектикът',
+    'Delaware': 'Делауеър',
+    'District of Columbia': 'Окръг Колумбия',
+    'Florida': 'Флорида',
+    'Georgia': 'Джорджия',
+    'Hawaii': 'Хаваи',
+    'Idaho': 'Айдахо',
+    'Illinois': 'Илинойс',
+    'Indiana': 'Индиана',
+    'Iowa': 'Айова',
+    'Kansas': 'Канзас',
+    'Kentucky': 'Кентъки',
+    'Louisiana': 'Луизиана',
+    'Maine': 'Мейн',
+    'Maryland': 'Мериленд',
+    'Massachusetts': 'Масачузетс',
+    'Michigan': 'Мичиган',
+    'Minnesota': 'Минесота',
+    'Mississippi': 'Мисисипи',
+    'Missouri': 'Мисури',
+    'Montana': 'Монтана',
+    'Nebraska': 'Небраска',
+    'Nevada': 'Невада',
+    'New Hampshire': 'Ню Хемпшър',
+    'New Jersey': 'Ню Джърси',
+    'New Mexico': 'Ню Мексико',
+    'New York': 'Ню Йорк',
+    'North Carolina': 'Северна Каролина',
+    'North Dakota': 'Северна Дакота',
+    'Ohio': 'Охайо',
+    'Oklahoma': 'Оклахома',
+    'Oregon': 'Орегон',
+    'Pennsylvania': 'Пенсилвания',
+    'Rhode Island': 'Роуд Айлънд',
+    'South Carolina': 'Южна Каролина',
+    'South Dakota': 'Южна Дакота',
+    'Tennessee': 'Тенеси',
+    'Texas': 'Тексас',
+    'Utah': 'Юта',
+    'Vermont': 'Върмонт',
+    'Virginia': 'Вирджиния',
+    'Washington': 'Вашингтон',
+    'West Virginia': 'Западна Вирджиния',
+    'Wisconsin': 'Уисконсин',
+    'Wyoming': 'Уайоминг'
+}));
+const byName = (a, b) => a.displayName.localeCompare(b.displayName, 'bg');
 const comparators = {
     name: byName,
     ascending: (a, b) => a.population - b.population || byName(a, b),
@@ -18,12 +71,14 @@ let states = [];
 
 function render() {
     const query = search.value.trim().toLowerCase();
-    const filtered = states.filter(state => state.stateName.toLowerCase().includes(query));
+    const filtered = states.filter(state =>
+        state.displayName.toLowerCase().includes(query) || state.stateName.toLowerCase().includes(query)
+    );
     filtered.sort(comparators[sort.value]);
 
     const rows = filtered.map(state => {
         const row = document.createElement('tr');
-        row.insertCell().textContent = state.stateName;
+        row.insertCell().textContent = state.displayName;
         row.insertCell().textContent = numberFormat.format(state.population);
         return row;
     });
@@ -48,7 +103,11 @@ async function load() {
     try {
         const response = await fetch('/api/stats/states', { cache: 'no-cache' });
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
-        states = await response.json();
+        const data = await response.json();
+        states = data.map(state => ({
+            ...state,
+            displayName: stateNames.get(state.stateName) ?? state.stateName
+        }));
         if (states.length === 0) {
             status.textContent = 'Все още няма заредени данни. Провери отново след малко.';
             reload.hidden = false;
