@@ -12,6 +12,8 @@ body { margin: 0; }
 .topbar { background: #fff; border-bottom: 1px solid #d6e0db; }
 .topbar-inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 4rem; }
 .brand { font-weight: 750; }
+.topbar nav, .pagination { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem 1rem; }
+.topbar nav [aria-current] { font-weight: 750; }
 a { color: #185f4d; }
 
 main { padding-block: clamp(1.25rem, 4vw, 3rem); }
@@ -61,6 +63,8 @@ input, select, button {
 button { cursor: pointer; }
 :focus-visible { outline: 2px solid #167c64; outline-offset: 3px; }
 .status { margin-block: 1rem .5rem; color: #456258; }
+.pagination { margin-top: 1rem; }
+[hidden] { display: none !important; }
 table { width: 100%; border-collapse: collapse; }
 th, td { padding: .7rem .5rem; border-bottom: 1px solid #dce7e1; text-align: left; }
 th { background: #eff6f2; }

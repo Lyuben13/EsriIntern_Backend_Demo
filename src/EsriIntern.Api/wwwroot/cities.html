@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="bg">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Търсене по градове | Демографски атлас</title>
+    <link rel="stylesheet" href="/dashboard.css">
+    <script src="/state-names.js" defer></script>
+    <script src="/cities.js" defer></script>
+</head>
+<body>
+    <header class="topbar">
+        <div class="wrap topbar-inner">
+            <span class="brand">Демографски атлас</span>
+            <nav aria-label="Раздели"><a href="/">Щати</a><a href="/cities.html" aria-current="page">Градове</a><a href="/api/stats/states">Данни от API</a></nav>
+        </div>
+    </header>
+    <main class="wrap">
+        <section class="overview" aria-labelledby="title">
+            <h1 id="title">Търсене по градове</h1>
+            <p class="intro">САЩ · Оценки за населението към 1 юли 2025 г.</p>
+        </section>
+        <section class="panel" aria-labelledby="results-title">
+            <div class="panel-heading">
+                <h2 id="results-title">Градове и селища</h2>
+                <div class="controls">
+                    <label for="city-search">Търси по име или щат
+                        <input id="city-search" type="search" placeholder="Напр. Мъртъл Бийч" disabled>
+                    </label>
+                </div>
+            </div>
+            <p class="status" id="city-status" role="status">Зареждане на данните…</p>
+            <button id="city-retry" type="button" hidden>Опитай отново</button>
+            <table id="city-table" aria-labelledby="results-title" hidden>
+                <thead><tr><th scope="col">Населено място</th><th scope="col">Щат</th><th scope="col">Население</th></tr></thead>
+                <tbody id="city-results"></tbody>
+            </table>
+            <nav class="pagination" id="city-pages" aria-label="Страници с резултати" hidden>
+                <button id="city-prev" type="button">Предишна</button>
+                <span id="city-page"></span>
+                <button id="city-next" type="button">Следваща</button>
+            </nav>
+            <p class="status">Източник <a href="https://www2.census.gov/programs-surveys/popest/datasets/2020-2025/cities/totals/">US Census Bureau</a>. Наборът обхваща официално учредени селища, консолидирани градове и общини от тип town. Имената следват източника.</p>
+        </section>
+    </main>
+</body>
+</html>

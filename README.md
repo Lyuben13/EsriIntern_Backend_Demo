@@ -13,6 +13,12 @@
 
 При локално стартиране таблото е на [localhost:5000](http://localhost:5000). Първото отваряне на публичното демо след период на неактивност може да отнеме повече време.
 
+### Търсене по градове
+
+Разделът [Градове](https://esri-demographics-atlas.onrender.com/cities.html) използва оценките на US Census Bureau към 1 юли 2025 г. от [SUB-EST2025](https://www2.census.gov/programs-surveys/popest/datasets/2020-2025/cities/totals/). Включени са официално учредените селища, консолидираните градове и активните общини от тип town в набора. Имената на селищата са от източника, а имената на щатите са на български.
+
+За повторно генериране на файла изтегли `sub-est2025.csv` и изпълни `python scripts/import-census-places.py sub-est2025.csv src/EsriIntern.Api/wwwroot/census-places-2025.json` от основната папка на проекта.
+
 ### Swagger UI
 ![Swagger UI](screenshots/swaggerEsri.jpg)
 
