@@ -33,6 +33,17 @@ h2 { font-size: 1.35rem; letter-spacing: -.02em; }
 .metrics dd { margin-top: .2rem; font-size: clamp(1.15rem, 3vw, 1.8rem); font-weight: 700; }
 
 .panel { margin-top: 1.25rem; padding: clamp(1rem, 3vw, 1.75rem); background: #fff; border: 1px solid #d6e0db; border-radius: 1rem; }
+.chart { margin: 1rem 0 0; padding: 0; list-style: none; }
+.chart-row {
+    display: grid;
+    grid-template-columns: minmax(9rem, 13rem) 1fr minmax(6.5rem, auto);
+    align-items: center;
+    gap: .25rem .9rem;
+    padding-block: .35rem;
+}
+.chart-track { height: .7rem; overflow: hidden; border-radius: 1rem; background: #e8f0ec; }
+.chart-bar { display: block; height: 100%; border-radius: inherit; background: #267c64; }
+.chart-value { text-align: right; font-variant-numeric: tabular-nums; font-weight: 600; }
 .panel-heading { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 1rem; }
 .controls { display: flex; flex-wrap: wrap; gap: .75rem; }
 .controls label { display: grid; gap: .3rem; font-size: .9rem; font-weight: 600; }
@@ -57,6 +68,8 @@ th:last-child, td:last-child { text-align: right; font-variant-numeric: tabular-
 tbody tr:last-child td { border-bottom: 0; }
 
 @media (max-width: 36rem) {
+    .chart-row { grid-template-columns: 1fr auto; padding-block: .45rem; }
+    .chart-track { grid-column: 1 / -1; grid-row: 2; }
     .metrics { grid-template-columns: 1fr 1fr; }
     .metrics div:last-child { grid-column: 1 / -1; }
     .controls, input, select { width: 100%; }

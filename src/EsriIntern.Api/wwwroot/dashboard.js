@@ -69,6 +69,33 @@ const comparators = {
 };
 let states = [];
 
+function renderChart() {
+    const ranked = states.filter(state => state.stateName !== 'District of Columbia' && state.population > 0)
+        .sort(comparators.descending)
+        .slice(0, 10);
+    const largest = ranked[0]?.population;
+    const bars = ranked.map(state => {
+        const row = document.createElement('li');
+        row.className = 'chart-row';
+        const label = document.createElement('span');
+        label.textContent = state.displayName;
+        const track = document.createElement('span');
+        track.className = 'chart-track';
+        track.setAttribute('aria-hidden', 'true');
+        const bar = document.createElement('span');
+        bar.className = 'chart-bar';
+        bar.style.width = `${state.population / largest * 100}%`;
+        track.append(bar);
+        const value = document.createElement('span');
+        value.className = 'chart-value';
+        value.textContent = numberFormat.format(state.population);
+        row.append(label, track, value);
+        return row;
+    });
+    document.querySelector('#chart-results').replaceChildren(...bars);
+    document.querySelector('#population-chart').hidden = ranked.length === 0;
+}
+
 function render() {
     const query = search.value.trim().toLowerCase();
     const filtered = states.filter(state =>
@@ -125,6 +152,7 @@ async function load() {
         document.querySelector('#data-note').hidden = !states.some(state => state.population === 0);
         search.disabled = false;
         sort.disabled = false;
+        renderChart();
         render();
     } catch {
         status.textContent = 'Данните не можаха да се заредят.';
