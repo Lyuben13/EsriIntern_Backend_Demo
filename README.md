@@ -1,7 +1,6 @@
 # ESRI Internship – Backend demo (Background processing + REST API)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Build Status](https://img.shields.io/badge/build-passing-brightgreen)]()  <!-- Ако добавиш CI -->
 [![.NET 8](https://img.shields.io/badge/.NET-8.0-blue.svg)](https://dotnet.microsoft.com/)
 [![Swagger](https://img.shields.io/badge/Swagger-Documented-green)](http://localhost:5000/swagger)
 [![Health Checks](https://img.shields.io/badge/Health-Ready-brightgreen)]()
@@ -34,6 +33,7 @@
 - **Background processing** (HostedService), който периодично извлича демографски данни (население) от ArcGIS Feature Service.
 - **REST API**, което връща агрегирани резултати на ниво **щат** (sum на `POPULATION` по `STATE_NAME`).
 - **SQLite** persistence чрез EF Core (можеш лесно да го смениш с друга БД).
+- **Атомарно опресняване** на статистиките. При грешка от ArcGIS, празен резултат или неуспешен запис API-то запазва последните успешно заредени данни.
 
 ## Какво покрива от задачата
 - Извлича данни от услуга „USA Counties“ (ArcGIS REST / Feature Service)

@@ -4,12 +4,21 @@ namespace EsriIntern.Api.Services;
 
 public sealed class ArcGisQueryResponse
 {
+    [JsonPropertyName("error")]
+    public ArcGisError? Error { get; set; }
+
     [JsonPropertyName("features")]
     public List<ArcGisFeature> Features { get; set; } = new();
 
     // Some ArcGIS services return this when more records exist.
     [JsonPropertyName("exceededTransferLimit")]
     public bool? ExceededTransferLimit { get; set; }
+}
+
+public sealed class ArcGisError
+{
+    public int Code { get; set; }
+    public string? Message { get; set; }
 }
 
 public sealed class ArcGisFeature

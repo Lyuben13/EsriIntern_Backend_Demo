@@ -59,7 +59,10 @@ public class ArcGisCountiesClient
 
             await using var stream = await resp.Content.ReadAsStreamAsync(ct);
             var data = await JsonSerializer.DeserializeAsync<ArcGisQueryResponse>(stream, _json, ct)
-                       ?? new ArcGisQueryResponse();
+                       ?? throw new InvalidOperationException("ArcGIS returned an empty response.");
+
+            if (data.Error is { } error)
+                throw new InvalidOperationException($"ArcGIS query failed ({error.Code}): {error.Message}");
 
             if (data.Features.Count == 0)
                 break;

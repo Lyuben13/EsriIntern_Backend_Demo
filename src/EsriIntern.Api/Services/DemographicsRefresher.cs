@@ -24,14 +24,12 @@ public class DemographicsRefresher
         try
         {
             var totals = await _client.GetPopulationByStateAsync(ct);
+            if (totals.Count == 0)
+                throw new InvalidOperationException("ArcGIS returned no state populations.");
+
+            // Keep the previous snapshot if writing its replacement fails.
+            await using var transaction = await _db.Database.BeginTransactionAsync(ct);
             var now = DateTime.UtcNow;
-
-        // Keep only latest snapshot per state:
-        // - remove old (batch delete - една SQL заявка)
-        // - insert new
-        // For a real system you might keep history in a separate table.
-
-        // Оптимизирано: използваме ExecuteDeleteAsync за batch delete вместо индивидуални DELETE заявки
         await _db.StatePopulations.ExecuteDeleteAsync(ct);
 
         foreach (var kv in totals.OrderBy(k => k.Key))
@@ -45,6 +43,7 @@ public class DemographicsRefresher
         }
 
             await _db.SaveChangesAsync(ct);
+            await transaction.CommitAsync(ct);
             _log.LogInformation("Demographics refresh finished. States: {Count}", totals.Count);
 
             return now;
