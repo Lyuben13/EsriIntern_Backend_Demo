@@ -6,6 +6,9 @@ namespace EsriIntern.Api.Services;
 
 public class DemographicsRefresher
 {
+    // U.S. Census Bureau V2025 estimate for July 1, 2025.
+    private const long ConnecticutPopulationEstimate = 3_688_496;
+
     private readonly ArcGisCountiesClient _client;
     private readonly AppDbContext _db;
     private readonly ILogger<DemographicsRefresher> _log;
@@ -26,6 +29,13 @@ public class DemographicsRefresher
             var totals = await _client.GetPopulationByStateAsync(ct);
             if (totals.Count == 0)
                 throw new InvalidOperationException("ArcGIS returned no state populations.");
+
+            // ArcGIS currently returns null population for Connecticut's planning regions.
+            if (!totals.TryGetValue("Connecticut", out var connecticutPopulation) || connecticutPopulation <= 0)
+            {
+                totals["Connecticut"] = ConnecticutPopulationEstimate;
+                _log.LogInformation("Using the Census Bureau V2025 population estimate for Connecticut");
+            }
 
             // Keep the previous snapshot if writing its replacement fails.
             await using var transaction = await _db.Database.BeginTransactionAsync(ct);
